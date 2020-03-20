@@ -1,4 +1,17 @@
-import { FETCH_SMURFS, FETCH_SMURFS_SUCCESS, FETCH_SMURFS_ERROR, ADD_SMURF, ADD_SMURF_SUCCESS, ADD_SMURF_ERROR } from '../actions/smurfActions';
+import { 
+    FETCH_SMURFS, 
+    FETCH_SMURFS_SUCCESS, 
+    FETCH_SMURFS_ERROR, 
+    ADD_SMURF, 
+    ADD_SMURF_SUCCESS, 
+    ADD_SMURF_ERROR,
+    REMOVE_SMURF,
+    REMOVE_SMURF_SUCCESS,
+    REMOVE_SMURF_ERROR,
+    EDIT_SMURF,
+    EDIT_SMURF_SUCCESS,
+    EDIT_SMURF_ERROR 
+} from '../actions/smurfActions';
 
 const intialState = {
     smurfs: [],
@@ -40,6 +53,42 @@ export const smurfReducer = (state = intialState, action) => {
                 isFetching: false
             }
         case ADD_SMURF_ERROR:
+            return {
+                ...state,
+                error: action.payload,
+                isFetching: false
+            }
+        case REMOVE_SMURF:
+            return {
+                ...state,
+                error: '',
+                isFetching: true
+            }
+        case REMOVE_SMURF_SUCCESS:
+            return {
+                smurfs: [...action.payload],
+                error: '',
+                isFetching: false
+            }
+        case REMOVE_SMURF_ERROR:
+            return {
+                ...state,
+                error: action.payload,
+                isFetching: false
+            }
+        case EDIT_SMURF:
+            return {
+                ...state,
+                error: '',
+                isFetching: true
+            }
+        case EDIT_SMURF_SUCCESS:
+            return {
+                smurfs: [...action.payload],
+                error: '',
+                isFetching: false
+            }
+        case EDIT_SMURF_ERROR:
             return {
                 ...state,
                 error: action.payload,

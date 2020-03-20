@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="App">
       <h1>Add a Smurf</h1>
-      {requestError && <p>There was an error with the request</p>}
+      {requestError && <p>{requestError}</p>}
       <SmurfForm/>
       <h1>Smurfs</h1>
       <div className='smurf-container'>
