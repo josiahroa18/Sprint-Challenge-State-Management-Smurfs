@@ -8,6 +8,7 @@ import "./App.css";
 
 function App() {
   const smurfs = useSelector(state => state.smurfs);
+  const requestError = useSelector(state => state.error);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,8 +17,11 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Add a Smurf</h1>
+      {requestError && <p>There was an error with the request</p>}
+      <SmurfForm/>
       <h1>Smurfs</h1>
-      <div>
+      <div className='smurf-container'>
         {smurfs && smurfs.map(smurf => {
           return <SmurfCard key={smurf.id} smurf={smurf}/>
         })}
